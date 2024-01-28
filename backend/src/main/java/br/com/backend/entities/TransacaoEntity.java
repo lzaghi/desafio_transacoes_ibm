@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@Entity(name = "transacao")
+@Entity(name = "transacoes")
 public class TransacaoEntity {
     @Id
     @Column(name = "id")
