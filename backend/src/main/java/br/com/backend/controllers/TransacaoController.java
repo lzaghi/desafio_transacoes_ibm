@@ -20,8 +20,23 @@ public class TransacaoController {
     }
 
     @PostMapping
-    public ResponseEntity<List<TransacaoEntity>> adicionarTransacao(@RequestBody List<TransacaoEntity> arrayTransacao) {
-        List<TransacaoEntity> novasTransacoes = transacaoService.adicionarTransacao(arrayTransacao);
-        return ResponseEntity.status(201).body(novasTransacoes);
+    public ResponseEntity<Object> adicionarTransacao(@RequestBody List<TransacaoEntity> arrayTransacao) {
+        boolean anyMatch = arrayTransacao.stream().anyMatch(t -> t.getId() != null);
+        if (anyMatch) {
+            return ResponseEntity.status(400).body("Requisição não deve conter ids");
+        } else {
+            List<TransacaoEntity> novasTransacoes = transacaoService.adicionarTransacao(arrayTransacao);
+            return ResponseEntity.status(201).body(novasTransacoes);
+        }
+    }
+
+    @PutMapping
+    public ResponseEntity<Object> atualizarTransacao(@RequestBody TransacaoEntity transacao) {
+        if (transacao.getId() == null) {
+            return ResponseEntity.status(400).body("Id é obrigatório");
+        } else {
+            TransacaoEntity novaTransacao = transacaoService.atualizarTransacao(transacao);
+            return ResponseEntity.status(200).body(novaTransacao);
+        }
     }
 }

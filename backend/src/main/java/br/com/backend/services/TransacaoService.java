@@ -19,4 +19,8 @@ public class TransacaoService {
     public List<TransacaoEntity> adicionarTransacao(List<TransacaoEntity> arrayTransacao) {
         return transacaoRepository.saveAll(arrayTransacao);
     }
+
+    public TransacaoEntity atualizarTransacao(TransacaoEntity transacao) {
+        return transacaoRepository.save(transacao);
+    }
 }
