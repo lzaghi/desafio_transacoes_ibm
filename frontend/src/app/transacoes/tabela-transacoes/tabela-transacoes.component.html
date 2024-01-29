@@ -1,8 +1,23 @@
-<p *ngIf="transacoes.length === 0">
+Filtros:
+
+Categoria:
+<select [(ngModel)]="filtroCategoria">
+  <option [ngValue]="todasCategorias">Todas</option>
+  <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nome}}</option>
+</select>
+
+Data:
+<select [(ngModel)]="filtroData">
+  <option [ngValue]="todasDatas">Todas</option>
+  <option *ngFor="let data of recuperarDatas()" [ngValue]="data">{{data}}</option>
+</select>
+
+<p *ngIf="filtrarTransacoes(transacoes).length === 0">
   Nenhuma transação registrada.
 </p>
 
-<div *ngIf="transacoes.length > 0">
+
+<div *ngIf="filtrarTransacoes(transacoes).length > 0">
   <table >
     <thead>
       <tr>
@@ -14,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let transacao of transacoes; index as i">
+      <tr *ngFor="let transacao of filtrarTransacoes(transacoes); index as i">
         <td>
           <ng-container *ngIf="!transacao.editando">{{ transacao.categoria!.nome }}</ng-container>
           <select *ngIf="transacao.editando" [(ngModel)]="transacao.categoria">
@@ -41,5 +56,5 @@
 
   <button (click)="deletarTodasTransacoes()">Limpar todos os registros</button>
 
-  <p>Saldo: {{ calcularSaldo().toFixed(2)}}</p>
+  <p>Saldo: {{ calcularSaldo(filtrarTransacoes(transacoes)).toFixed(2)}}</p>
 </div>

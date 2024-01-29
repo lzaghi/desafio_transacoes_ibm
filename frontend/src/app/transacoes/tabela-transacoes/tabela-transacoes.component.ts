@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { Categoria, Transacao } from '../transacao';
 import { TransacoesService } from '../transacoes.service';
 
@@ -19,8 +19,26 @@ export class TabelaTransacoesComponent {
   @Output()
   alteracaoRegistros: EventEmitter<void> = new EventEmitter<void>();
 
-  calcularSaldo(): number {
-    return this.transacoes.reduce((acumulador, transacao) => {
+  todasCategorias: Categoria = {nome: "todas"};
+  filtroCategoria: Categoria = this.todasCategorias;
+
+  todasDatas: Date = new Date(0);
+  filtroData: Date = this.todasDatas;
+
+  recuperarDatas(): Date[] {
+    const datas = new Set<Date>();
+    this.transacoes.forEach((t) => datas.add(t.data!));
+    return Array.from(datas);
+  }
+
+  filtrarTransacoes(transacoes: Transacao[]): Transacao[] | [] {
+    return transacoes
+              .filter((t) => t.categoria!.nome === this.filtroCategoria?.nome || this.filtroCategoria?.nome === 'todas')
+              .filter((t) => t.data === this.filtroData || this.filtroData === this.todasDatas);
+  }
+
+  calcularSaldo(transacoes: Transacao[]): number {
+    return transacoes.reduce((acumulador, transacao) => {
       return acumulador + transacao.valor!;
     }, 0)
   }
