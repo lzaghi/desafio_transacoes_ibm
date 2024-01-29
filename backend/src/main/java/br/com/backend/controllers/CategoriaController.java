@@ -3,9 +3,8 @@ package br.com.backend.controllers;
 import br.com.backend.entities.CategoriaEntity;
 import br.com.backend.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +15,13 @@ public class CategoriaController {
     private CategoriaService categoriaService;
 
     @GetMapping
-    public List<CategoriaEntity> buscarTodasCategorias() {
-        return categoriaService.buscarTodasCategorias();
+    public ResponseEntity<List<CategoriaEntity>> buscarTodasCategorias() {
+        List<CategoriaEntity> categorias = categoriaService.buscarTodasCategorias();
+        return ResponseEntity.status(200).body(categorias);
+    }
+
+    @PostMapping
+    public CategoriaEntity adicionarCategoria(@RequestBody CategoriaEntity categoria) {
+        return categoriaService.adicionarCategoria(categoria);
     }
 }

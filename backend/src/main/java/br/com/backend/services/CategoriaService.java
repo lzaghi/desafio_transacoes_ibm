@@ -15,4 +15,8 @@ public class CategoriaService {
     public List<CategoriaEntity> buscarTodasCategorias() {
         return categoriaRepository.findAll();
     }
+
+    public CategoriaEntity adicionarCategoria(CategoriaEntity categoria) {
+        return categoriaRepository.save(categoria);
+    }
 }
