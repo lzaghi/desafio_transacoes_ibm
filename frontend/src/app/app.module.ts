@@ -8,13 +8,17 @@ import { TransacoesComponent } from './transacoes/transacoes.component';
 import { LoadingComponent } from './loading/loading.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TabelaTransacoesComponent } from './transacoes/tabela-transacoes/tabela-transacoes.component';
+import { FormTransacoesComponent } from './transacoes/form-transacoes/form-transacoes.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TransacoesComponent,
     LoadingComponent,
-    TabelaTransacoesComponent
+    TabelaTransacoesComponent,
+    FormTransacoesComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

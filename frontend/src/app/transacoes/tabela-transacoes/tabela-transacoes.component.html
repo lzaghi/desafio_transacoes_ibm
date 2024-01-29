@@ -12,8 +12,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let transacao of transacoes; index as i">
-      <td>{{transacao.categoria.nome}}</td>
-      <td>{{transacao.valor.toFixed(2)}}</td>
+      <td>{{transacao.categoria!.nome}}</td>
+      <td>{{transacao.valor!.toFixed(2)}}</td>
       <td>{{transacao.data}}</td>
     </tr>
   </tbody>

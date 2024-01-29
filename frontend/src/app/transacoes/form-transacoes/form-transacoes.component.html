@@ -1,0 +1,52 @@
+<h2>Novas transações</h2>
+
+<p *ngIf="estaCarregandoCategorias">
+  <app-loading [loading]="estaCarregandoCategorias"></app-loading>
+</p>
+
+<div *ngIf="!estaCarregandoCategorias">
+  Categoria
+  <select [(ngModel)]="transacao.categoria">
+    <option>Selecione</option>
+    <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nome}}</option>
+    <!-- <option [ngValue]="{id: 2, nome: 'Transporte'}">Transporte</option>
+    <option [ngValue]="{id: 3, nome: 'Outros'}">Outros</option> -->
+  </select>
+  
+  Valor
+  <input type="number" [(ngModel)]="transacao.valor"/>
+
+  Data
+  <input type="date" [(ngModel)]="transacao.data"/>
+  <button (click)="adicionarTransacao()">Adicionar transação</button>
+</div>
+
+
+<div *ngIf="listaTransacoes.length">
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Categoria</th>
+        <th>Valor</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transacao of listaTransacoes; index as i">
+        <td>{{i + 1}}</td>
+        <td>{{transacao.categoria!.nome}}</td>
+        <td>{{transacao.valor!.toFixed(2)}}</td>
+        <td>{{transacao.data}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="salvarTransacoes()">Salvar</button>
+</div>
+
+<p *ngIf="estaCarregando">
+  <app-loading [loading]="estaCarregando"></app-loading>
+</p>
+
+

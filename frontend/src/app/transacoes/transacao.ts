@@ -1,20 +1,20 @@
 export class Categoria {
-  id: number;
-  nome: string;
+  id?: number|null;
+  nome?: string|null;
 
-  constructor(id: number, nome: string) {
+  constructor(id?: number|null, nome?: string|null) {
     this.id = id;
     this.nome = nome;
   }
 }
 
 export class Transacao {
-  id: number;
-  data: Date;
-  valor: number;
-  categoria: Categoria
+  id?: number|null;
+  data?: Date|null;
+  valor?: number|null;
+  categoria?: Categoria|null;
   
-  constructor(id: number, data: Date, valor: number, categoria: Categoria) {
+  constructor(id?: number|null, data?: Date|null, valor?: number|null, categoria?: Categoria|null) {
     this.id = id;
     this.data = data;
     this.valor = valor;
