@@ -15,4 +15,8 @@ public class TransacaoService {
     public List<TransacaoEntity> buscarTodasTransacoes() {
         return transacaoRepository.findAll();
     }
+
+    public List<TransacaoEntity> adicionarTransacao(List<TransacaoEntity> arrayTransacao) {
+        return transacaoRepository.saveAll(arrayTransacao);
+    }
 }
