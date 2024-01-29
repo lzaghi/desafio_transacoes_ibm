@@ -32,4 +32,8 @@ export class TransacoesComponent implements OnInit {
       }
     )
   }
+
+  onTransacaoDeletada(): void {
+    this.recuperarTransacoes();
+  }
 }

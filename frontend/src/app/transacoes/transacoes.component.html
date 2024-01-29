@@ -4,4 +4,7 @@
   <app-loading [loading]="estaCarregando"></app-loading>
 </p>
 
-<app-tabela-transacoes *ngIf="!estaCarregando" [transacoes]="transacoes"></app-tabela-transacoes>
+<app-tabela-transacoes
+  *ngIf="!estaCarregando"
+  [transacoes]="transacoes"
+  (transacaoDeletada)="onTransacaoDeletada()"></app-tabela-transacoes>

@@ -23,4 +23,12 @@ export class TransacoesService {
   public salvarTransacao(arrayTransacao: Transacao[]): Observable<Transacao[]> {
     return this.http.post<Transacao[]>(this.url + '/transacoes', arrayTransacao);
   }
+
+  public deletarTransacao(id: number): Observable<any> {
+    return this.http.delete<any>(this.url + '/transacoes?id=' + id);
+  }
+
+  public deletarTodasTransacoes(): Observable<any> {
+    return this.http.delete<any>(this.url + '/transacoes/todas');
+  }
 }

@@ -2,19 +2,27 @@
   Nenhuma transação registrada.
 </p>
 
-<table *ngIf="transacoes.length > 0">
-  <thead>
-    <tr>
-      <th>Categoria</th>
-      <th>Valor</th>
-      <th>Data</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let transacao of transacoes; index as i">
-      <td>{{transacao.categoria!.nome}}</td>
-      <td>{{transacao.valor!.toFixed(2)}}</td>
-      <td>{{transacao.data}}</td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="transacoes.length > 0">
+  <table >
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Valor</th>
+        <th>Data</th>
+        <th>Alterar</th>
+        <th>Deletar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transacao of transacoes; index as i">
+        <td>{{transacao.categoria!.nome}}</td>
+        <td>{{transacao.valor!.toFixed(2)}}</td>
+        <td>{{transacao.data}}</td>
+        <td><button>A</button></td>
+        <td><button (click)="deletarTransacao(transacao.id)">X</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="deletarTodasTransacoes()">Limpar todos os registros</button>
+</div>
