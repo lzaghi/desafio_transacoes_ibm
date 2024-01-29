@@ -21,6 +21,7 @@ public class TransacaoEntity {
     @Column(name = "valor")
     private double valor;
 
-    @Column(name = "categoria")
-    private String categoria;
+    @ManyToOne
+    @JoinColumn
+    private CategoriaEntity categoria;
 }
