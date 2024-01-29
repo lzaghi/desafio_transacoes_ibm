@@ -1,0 +1,20 @@
+<p *ngIf="transacoes.length === 0">
+  Nenhuma transação registrada.
+</p>
+
+<table *ngIf="transacoes.length > 0">
+  <thead>
+    <tr>
+      <th>Categoria</th>
+      <th>Valor</th>
+      <th>Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transacao of transacoes; index as i">
+      <td>{{transacao.categoria.nome}}</td>
+      <td>{{transacao.valor.toFixed(2)}}</td>
+      <td>{{transacao.data}}</td>
+    </tr>
+  </tbody>
+</table>

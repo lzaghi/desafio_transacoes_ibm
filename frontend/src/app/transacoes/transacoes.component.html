@@ -1,0 +1,5 @@
+<p *ngIf="estaCarregando">
+  <app-loading [loading]="estaCarregando"></app-loading>
+</p>
+
+<app-tabela-transacoes *ngIf="!estaCarregando" [transacoes]="transacoes"></app-tabela-transacoes>
