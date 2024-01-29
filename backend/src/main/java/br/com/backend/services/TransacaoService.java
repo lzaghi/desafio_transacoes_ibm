@@ -2,6 +2,7 @@ package br.com.backend.services;
 
 import br.com.backend.entities.TransacaoEntity;
 import br.com.backend.repositories.TransacaoRepository;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,13 @@ public class TransacaoService {
 
     public TransacaoEntity atualizarTransacao(TransacaoEntity transacao) {
         return transacaoRepository.save(transacao);
+    }
+
+    public void deletarTransacaoPorId(Integer id) {
+        transacaoRepository.deleteById(id);
+    }
+
+    public void deletarTodasTransacoes() {
+        transacaoRepository.deleteAll();
     }
 }

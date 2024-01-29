@@ -2,6 +2,7 @@ package br.com.backend.controllers;
 
 import br.com.backend.entities.TransacaoEntity;
 import br.com.backend.services.TransacaoService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,5 +39,17 @@ public class TransacaoController {
             TransacaoEntity novaTransacao = transacaoService.atualizarTransacao(transacao);
             return ResponseEntity.status(200).body(novaTransacao);
         }
+    }
+
+    @DeleteMapping
+    public ResponseEntity deletarTransacaoPorId (@PathParam("id") Integer id) {
+        transacaoService.deletarTransacaoPorId(id);
+        return ResponseEntity.status(204).build();
+    }
+
+    @DeleteMapping("/todas")
+    public ResponseEntity deletarTodasTransacoes () {
+        transacaoService.deletarTodasTransacoes();
+        return ResponseEntity.status(204).build();
     }
 }
