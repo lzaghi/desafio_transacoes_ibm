@@ -15,14 +15,31 @@
     </thead>
     <tbody>
       <tr *ngFor="let transacao of transacoes; index as i">
-        <td>{{transacao.categoria!.nome}}</td>
-        <td>{{transacao.valor!.toFixed(2)}}</td>
-        <td>{{transacao.data}}</td>
-        <td><button>A</button></td>
+        <td>
+          <ng-container *ngIf="!transacao.editando">{{ transacao.categoria!.nome }}</ng-container>
+          <select *ngIf="transacao.editando" [(ngModel)]="transacao.categoria">
+            <option [ngValue]="transacao.categoria">{{transacao.categoria!.nome}}</option>
+            <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nome}}</option>
+          </select>
+        </td>
+        <td>
+          <ng-container *ngIf="!transacao.editando">{{ transacao.valor!.toFixed(2) }}</ng-container>
+          <input *ngIf="transacao.editando" [(ngModel)]="transacao.valor" type="number" />
+        </td>
+        <td>
+          <ng-container *ngIf="!transacao.editando">{{ transacao.data }}</ng-container>
+          <input *ngIf="transacao.editando" [(ngModel)]="transacao.data" type="date" />
+        </td>
+        <td>
+          <button *ngIf="!transacao.editando" (click)="transacao.editando = true">Alterar</button>
+          <button *ngIf="transacao.editando" (click)="atualizarTransacao(transacao)">Salvar</button>
+        </td>
         <td><button (click)="deletarTransacao(transacao.id)">X</button></td>
       </tr>
     </tbody>
   </table>
 
   <button (click)="deletarTodasTransacoes()">Limpar todos os registros</button>
+
+  <p>Saldo: {{ calcularSaldo().toFixed(2)}}</p>
 </div>

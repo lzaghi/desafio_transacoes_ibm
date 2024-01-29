@@ -7,10 +7,7 @@
 <div *ngIf="!estaCarregandoCategorias">
   Categoria
   <select [(ngModel)]="transacao.categoria">
-    <option>Selecione</option>
     <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nome}}</option>
-    <!-- <option [ngValue]="{id: 2, nome: 'Transporte'}">Transporte</option>
-    <option [ngValue]="{id: 3, nome: 'Outros'}">Outros</option> -->
   </select>
   
   Valor

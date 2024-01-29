@@ -5,6 +5,7 @@
 </p>
 
 <app-tabela-transacoes
-  *ngIf="!estaCarregando"
+  *ngIf="!estaCarregando && categorias.length > 0"
   [transacoes]="transacoes"
-  (transacaoDeletada)="onTransacaoDeletada()"></app-tabela-transacoes>
+  [categorias]="categorias"
+  (alteracaoRegistros)="onAlteracaoRegistros()"></app-tabela-transacoes>

@@ -13,6 +13,7 @@ export class Transacao {
   data?: Date|null;
   valor?: number|null;
   categoria?: Categoria|null;
+  editando?: boolean = false;
   
   constructor(id?: number|null, data?: Date|null, valor?: number|null, categoria?: Categoria|null) {
     this.id = id;

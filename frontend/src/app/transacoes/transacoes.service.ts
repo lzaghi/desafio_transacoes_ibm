@@ -31,4 +31,8 @@ export class TransacoesService {
   public deletarTodasTransacoes(): Observable<any> {
     return this.http.delete<any>(this.url + '/transacoes/todas');
   }
+
+  public atualizarTransacao(transacao: Transacao): Observable<Transacao> {
+    return this.http.put<Transacao>(this.url + '/transacoes', transacao);
+  }
 }
