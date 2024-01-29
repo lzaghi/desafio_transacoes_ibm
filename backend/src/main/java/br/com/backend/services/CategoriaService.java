@@ -19,4 +19,8 @@ public class CategoriaService {
     public CategoriaEntity adicionarCategoria(CategoriaEntity categoria) {
         return categoriaRepository.save(categoria);
     }
+
+    public void deletarCategoria(Integer id) {
+        categoriaRepository.deleteById(id);
+    }
 }

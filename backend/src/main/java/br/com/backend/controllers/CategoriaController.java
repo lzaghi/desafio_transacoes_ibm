@@ -2,6 +2,7 @@ package br.com.backend.controllers;
 
 import br.com.backend.entities.CategoriaEntity;
 import br.com.backend.services.CategoriaService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,14 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public CategoriaEntity adicionarCategoria(@RequestBody CategoriaEntity categoria) {
-        return categoriaService.adicionarCategoria(categoria);
+    public ResponseEntity<CategoriaEntity> adicionarCategoria(@RequestBody CategoriaEntity categoria) {
+        CategoriaEntity novaCategoria = categoriaService.adicionarCategoria(categoria);
+        return ResponseEntity.status(201).body(novaCategoria);
+    }
+
+    @DeleteMapping
+    public ResponseEntity deletarCategoria(@PathParam("id") Integer id) {
+        categoriaService.deletarCategoria(id);
+        return ResponseEntity.status(204).build();
     }
 }
