@@ -20,6 +20,10 @@ export class TransacoesService {
     return this.http.get<Categoria[]>(this.url + '/categorias');
   }
 
+  public salvarCategoria(categoria: Categoria): Observable<Categoria> {
+    return this.http.post<Categoria>(this.url + '/categorias', categoria);
+  }
+
   public salvarTransacao(arrayTransacao: Transacao[]): Observable<Transacao[]> {
     return this.http.post<Transacao[]>(this.url + '/transacoes', arrayTransacao);
   }

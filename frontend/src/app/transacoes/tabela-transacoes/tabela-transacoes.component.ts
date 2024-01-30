@@ -46,7 +46,6 @@ export class TabelaTransacoesComponent {
   deletarTransacao(id?: number|null): void {
     this.transacoesService.deletarTransacao(id!).subscribe(
       (_resposta) => {
-        // alert('Transação deletada com sucesso!');
         this.alteracaoRegistros.emit();
       },
       (error) => {

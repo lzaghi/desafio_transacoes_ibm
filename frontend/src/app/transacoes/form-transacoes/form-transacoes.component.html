@@ -39,7 +39,12 @@
     </tbody>
   </table>
 
-  <button (click)="salvarTransacoes()">Salvar</button>
+  <button (click)="salvarTransacoes()">Salvar modificações</button>
+</div>
+
+<div *ngIf="!estaCarregandoCategorias">
+  Criar nova categoria: <input type="text" [(ngModel)]="novaCategoria.nome" />
+  <button (click)="adicionarCategoria()" [disabled]="novaCategoria.nome === ''">Criar</button>
 </div>
 
 <p *ngIf="estaCarregando">
