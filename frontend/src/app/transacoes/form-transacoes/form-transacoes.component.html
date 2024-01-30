@@ -5,21 +5,28 @@
 </p>
 
 <div *ngIf="!estaCarregandoCategorias">
+  <div class="criar-categoria">
+    Criar nova categoria: <input type="text" [(ngModel)]="novaCategoria.nome" />
+    <button (click)="adicionarCategoria()" [disabled]="novaCategoria.nome === ''">Criar</button>
+  </div>
+
   Categoria
   <select [(ngModel)]="transacao.categoria">
     <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nome}}</option>
   </select>
-  
+  <br />
   Valor
-  <input type="number" [(ngModel)]="transacao.valor"/>
-
+  <input type="number" [(ngModel)]="transacao.valor" class="valor"/>
+  <br />
   Data
   <input type="date" [(ngModel)]="transacao.data"/>
+  <br />
   <button (click)="adicionarTransacao()">Adicionar transação</button>
 </div>
 
 
-<div *ngIf="listaTransacoes.length">
+<div *ngIf="listaTransacoes.length" class="tabela">
+  <h3>Informações a adicionar:</h3>
   <table>
     <thead>
       <tr>
@@ -39,12 +46,7 @@
     </tbody>
   </table>
 
-  <button (click)="salvarTransacoes()">Salvar modificações</button>
-</div>
-
-<div *ngIf="!estaCarregandoCategorias">
-  Criar nova categoria: <input type="text" [(ngModel)]="novaCategoria.nome" />
-  <button (click)="adicionarCategoria()" [disabled]="novaCategoria.nome === ''">Criar</button>
+  <button (click)="salvarTransacoes()" class="salvar">Salvar modificações</button>
 </div>
 
 <p *ngIf="estaCarregando">

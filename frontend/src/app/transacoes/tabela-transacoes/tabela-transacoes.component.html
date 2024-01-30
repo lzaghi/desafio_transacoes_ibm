@@ -1,23 +1,25 @@
-Filtros:
-
-Categoria:
-<select [(ngModel)]="filtroCategoria">
-  <option [ngValue]="todasCategorias">Todas</option>
-  <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nome}}</option>
-</select>
-
-Data:
-<select [(ngModel)]="filtroData">
-  <option [ngValue]="todasDatas">Todas</option>
-  <option *ngFor="let data of recuperarDatas()" [ngValue]="data">{{data}}</option>
-</select>
+<div class="filtros">
+  Filtros
+  <br />
+  Categoria:
+  <select [(ngModel)]="filtroCategoria">
+    <option [ngValue]="todasCategorias">Todas</option>
+    <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nome}}</option>
+  </select>
+  
+  Data:
+  <select [(ngModel)]="filtroData">
+    <option [ngValue]="todasDatas">Todas</option>
+    <option *ngFor="let data of recuperarDatas()" [ngValue]="data">{{data}}</option>
+  </select>
+</div>
 
 <p *ngIf="filtrarTransacoes(transacoes).length === 0">
   Nenhuma transação registrada.
 </p>
 
 
-<div *ngIf="filtrarTransacoes(transacoes).length > 0">
+<div *ngIf="filtrarTransacoes(transacoes).length > 0" class="tabela">
   <table >
     <thead>
       <tr>
@@ -31,7 +33,7 @@ Data:
     <tbody>
       <tr *ngFor="let transacao of filtrarTransacoes(transacoes); index as i">
         <td>
-          <ng-container *ngIf="!transacao.editando">{{ transacao.categoria!.nome }}</ng-container>
+          <ng-container *ngIf="!transacao.editando" class="categoria">{{ transacao.categoria!.nome }}</ng-container>
           <select *ngIf="transacao.editando" [(ngModel)]="transacao.categoria">
             <option [ngValue]="transacao.categoria">{{transacao.categoria!.nome}}</option>
             <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nome}}</option>
@@ -54,7 +56,7 @@ Data:
     </tbody>
   </table>
 
-  <button (click)="deletarTodasTransacoes()">Limpar todos os registros</button>
+  <button (click)="deletarTodasTransacoes()" class="limpar" *ngIf="filtroCategoria === todasCategorias && filtroData === todasDatas">Limpar todos os registros</button>
 
   <p>Saldo: {{ calcularSaldo(filtrarTransacoes(transacoes)).toFixed(2)}}</p>
 </div>

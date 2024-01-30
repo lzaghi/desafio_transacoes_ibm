@@ -1,0 +1,47 @@
+input, select {
+  margin-bottom: 10px;
+}
+
+.valor {
+  width: 60px;
+}
+
+.criar-categoria {
+  margin-bottom: 20px;
+}
+
+.criar-categoria button {
+  margin-left: 10px;
+}
+
+button {
+  border: none;
+  background-color: #6097fd;
+  color: white;
+  border-radius: 10px;
+  padding: 3px 5px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  // margin-top: 20px;
+}
+
+.tabela {
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  margin-top: 30px;
+}
+
+.salvar {
+  margin-top: 20px;
+  align-self: flex-end;
+  padding: 5px 10px;
+}

@@ -1,0 +1,38 @@
+.filtros {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  // width: fit-content;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tabela {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  border: none;
+  background-color: #6097fd;
+  color: white;
+  border-radius: 10px;
+  padding: 3px 5px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.limpar {
+  align-self: flex-end;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+}
