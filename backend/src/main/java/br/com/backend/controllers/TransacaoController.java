@@ -24,7 +24,7 @@ public class TransacaoController {
     }
 
     @PostMapping
-    @Operation(summary = "Inserir transações, individualmente ou por lote", description = "Enpoint para criar novas transações. Necessário passar um array com uma ou mais transação, sendo que nenhuma delas pode ter o campo id, e devem passar um id de categoria válido (a relação com categoria é feita por id, o campo 'nome' passado é indiferente)")
+    @Operation(summary = "Inserir transações, individualmente ou por lote", description = "Enpoint para criar novas transações. Necessário passar um array com uma ou mais transação, sendo que nenhuma delas pode ter o campo id, e devem passar um id de categoria válido (a relação com categoria é feita por id, o valor do campo 'nome' passado é indiferente)")
     public ResponseEntity<Object> adicionarTransacao(@RequestBody List<TransacaoEntity> arrayTransacao) {
         boolean anyMatch = arrayTransacao.stream().anyMatch(t -> t.getId() != null);
         if (anyMatch) {
@@ -36,7 +36,7 @@ public class TransacaoController {
     }
 
     @PutMapping
-    @Operation(summary = "Atualizar transação por id", description = "Endpoint para alterar uma transação. Necessário passar o campo id, assim como um id de categoria válido (a relação com categoria é feita por id, o campo 'nome' passado é indiferente)")
+    @Operation(summary = "Atualizar transação por id", description = "Endpoint para alterar uma transação. Necessário passar o campo id, assim como um id de categoria válido (a relação com categoria é feita por id, o valor do campo 'nome' passado é indiferente)")
     public ResponseEntity<Object> atualizarTransacao(@RequestBody TransacaoEntity transacao) {
         if (transacao.getId() == null) {
             return ResponseEntity.status(400).body("Id é obrigatório");
