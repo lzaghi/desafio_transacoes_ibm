@@ -4,6 +4,7 @@ import br.com.backend.entities.TransacaoEntity;
 import br.com.backend.repositories.TransacaoRepository;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,8 @@ public class TransacaoService {
     private TransacaoRepository transacaoRepository;
 
     public List<TransacaoEntity> buscarTodasTransacoes() {
-        return transacaoRepository.findAll();
+        Sort sortByData = Sort.by(Sort.Direction.DESC, "data");
+        return transacaoRepository.findAll(sortByData);
     }
 
     public List<TransacaoEntity> adicionarTransacao(List<TransacaoEntity> arrayTransacao) {
