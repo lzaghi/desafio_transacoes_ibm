@@ -36,6 +36,11 @@ A aplicação já estará rodando! :)</br>
 Acesse ```http://localhost:4200``` para a experiência de usuário. O back-end estará rodando em ```http://localhost:8080```.
 
 
+Para parar a aplicação, basta executar o comando na raiz do projeto
+```bash
+  docker-compose down --remove-orphans
+```
+
 ## Documentação
 
 A documentação completa da API, com todas as operações possíveis, pode ser consultada localmente em ```http://localhost:8080/swagger-ui.html``` após a aplicação estar rodando.
