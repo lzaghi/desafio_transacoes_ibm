@@ -44,7 +44,8 @@ A documentação completa da API, com todas as operações possíveis, pode ser 
 
 ## Demonstração
 
-![](https://github.com/lzaghi/desafio_transacoes_ibm/assets/105127117/e9d5f0f5-d5c8-48f7-9562-676f185a9ef2)
+<!-- ![](https://github.com/lzaghi/desafio_transacoes_ibm/assets/105127117/e9d5f0f5-d5c8-48f7-9562-676f185a9ef2) -->
+![](demonstracao.gif)
 
 
 
